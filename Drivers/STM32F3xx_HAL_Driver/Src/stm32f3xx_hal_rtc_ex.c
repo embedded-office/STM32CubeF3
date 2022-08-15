@@ -133,6 +133,8 @@
 HAL_StatusTypeDef HAL_RTCEx_SetTimeStamp(RTC_HandleTypeDef *hrtc, uint32_t TimeStampEdge, uint32_t RTC_TimeStampPin)
 {
   uint32_t tmpreg = 0U;
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(RTC_TimeStampPin);
 
   /* Check the parameters */
   assert_param(IS_TIMESTAMP_EDGE(TimeStampEdge));
@@ -187,6 +189,8 @@ HAL_StatusTypeDef HAL_RTCEx_SetTimeStamp(RTC_HandleTypeDef *hrtc, uint32_t TimeS
 HAL_StatusTypeDef HAL_RTCEx_SetTimeStamp_IT(RTC_HandleTypeDef *hrtc, uint32_t TimeStampEdge, uint32_t RTC_TimeStampPin)
 {
   uint32_t tmpreg = 0U;
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(RTC_TimeStampPin);
 
   /* Check the parameters */
   assert_param(IS_TIMESTAMP_EDGE(TimeStampEdge));

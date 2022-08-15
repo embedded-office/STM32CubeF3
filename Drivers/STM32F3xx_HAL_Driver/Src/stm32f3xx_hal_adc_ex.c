@@ -4852,6 +4852,8 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStop_DMA(ADC_HandleTypeDef* hadc)
 uint32_t HAL_ADCEx_MultiModeGetValue(ADC_HandleTypeDef* hadc)
 {
   ADC_Common_TypeDef *tmpADC_Common;
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hadc);
   
   /* Check the parameters */
   assert_param(IS_ADC_MULTIMODE_MASTER_INSTANCE(hadc->Instance));

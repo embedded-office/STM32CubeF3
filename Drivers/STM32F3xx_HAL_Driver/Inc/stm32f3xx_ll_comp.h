@@ -720,6 +720,10 @@ __STATIC_INLINE void LL_COMP_SetCommonWindowMode(COMP_Common_TypeDef *COMPxy_COM
 #if defined(COMP_CSR_COMPxWNDWEN)
   MODIFY_REG(COMPxy_COMMON->CSR, COMP_CSR_COMPxWNDWEN, WindowMode);
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(WindowMode);
+  UNUSED(COMPxy_COMMON);
+
   /* Device without pair of comparator working in window mode */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_WINDOWMODE_DISABLE").                                           */
@@ -746,6 +750,9 @@ __STATIC_INLINE uint32_t LL_COMP_GetCommonWindowMode(COMP_Common_TypeDef *COMPxy
 #if defined(COMP_CSR_COMPxWNDWEN)
   return (uint32_t)(READ_BIT(COMPxy_COMMON->CSR, COMP_CSR_COMPxWNDWEN));
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPxy_COMMON);
+
   /* Device without pair of comparator working in window mode */
   return (LL_COMP_WINDOWMODE_DISABLE);
 #endif
@@ -777,6 +784,10 @@ __STATIC_INLINE void LL_COMP_SetPowerMode(COMP_TypeDef *COMPx, uint32_t PowerMod
 #if defined(COMP_CSR_COMPxMODE)
   MODIFY_REG(COMPx->CSR, COMP_CSR_COMPxMODE, PowerMode);
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+  UNUSED(PowerMode);
+
   /* Device without comparator power mode configurable */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_POWERMODE_HIGHSPEED").                                          */
@@ -800,6 +811,9 @@ __STATIC_INLINE uint32_t LL_COMP_GetPowerMode(COMP_TypeDef *COMPx)
 #if defined(COMP_CSR_COMPxMODE)
   return (uint32_t)(READ_BIT(COMPx->CSR, COMP_CSR_COMPxMODE));
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+
   /* Device without comparator power mode configurable */
   return (LL_COMP_POWERMODE_HIGHSPEED);
 #endif
@@ -867,6 +881,9 @@ __STATIC_INLINE void LL_COMP_ConfigInputs(COMP_TypeDef *COMPx, uint32_t InputMin
              COMP_CSR_COMPxINSEL | COMP_CSR_COMPxSW1,
              InputMinus | InputPlus);
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(InputPlus);
+
   /* Device without comparator input plus configurable */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_INPUT_PLUS_IO1" or "LL_COMP_INPUT_PLUS_IO2" compared to         */
@@ -905,6 +922,10 @@ __STATIC_INLINE void LL_COMP_SetInputPlus(COMP_TypeDef *COMPx, uint32_t InputPlu
 #elif defined(COMP_CSR_COMPxSW1)
   MODIFY_REG(COMPx->CSR, COMP_CSR_COMPxSW1, InputPlus);
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+  UNUSED(InputPlus);
+
   /* Device without comparator input plus configurable */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_INPUT_PLUS_IO1" or "LL_COMP_INPUT_PLUS_IO2" compared to         */
@@ -939,6 +960,9 @@ __STATIC_INLINE uint32_t LL_COMP_GetInputPlus(COMP_TypeDef *COMPx)
 #elif defined(COMP_CSR_COMPxSW1)
   return (uint32_t)(READ_BIT(COMPx->CSR, COMP_CSR_COMPxSW1));
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+
   /* Device without comparator input plus configurable */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_INPUT_PLUS_IO1" or "LL_COMP_INPUT_PLUS_IO2" compared to         */
@@ -1028,6 +1052,10 @@ __STATIC_INLINE void LL_COMP_SetInputHysteresis(COMP_TypeDef *COMPx, uint32_t In
 #if defined(COMP_CSR_COMPxHYST)
   MODIFY_REG(COMPx->CSR, COMP_CSR_COMPxHYST, InputHysteresis);
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+  UNUSED(InputHysteresis);
+
   /* Device without comparator input hysteresis */
   /* No update of comparator register (corresponds to setting                 */
   /* "LL_COMP_HYSTERESIS_NONE").                                              */
@@ -1051,6 +1079,9 @@ __STATIC_INLINE uint32_t LL_COMP_GetInputHysteresis(COMP_TypeDef *COMPx)
 #if defined(COMP_CSR_COMPxHYST)
   return (uint32_t)(READ_BIT(COMPx->CSR, COMP_CSR_COMPxHYST));
 #else
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(COMPx);
+
   /* Device without comparator input hysteresis */
   return (LL_COMP_HYSTERESIS_NONE);
 #endif
