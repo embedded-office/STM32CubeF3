@@ -637,6 +637,8 @@ ErrorStatus LL_COMP_DeInit(COMP_TypeDef *COMPx)
 ErrorStatus LL_COMP_Init(COMP_TypeDef *COMPx, LL_COMP_InitTypeDef *COMP_InitStruct)
 {
   ErrorStatus status = SUCCESS;
+  uint32_t clearMask;
+  uint32_t setMask;
 
   /* Check the parameters */
   assert_param(IS_COMP_ALL_INSTANCE(COMPx));
@@ -660,8 +662,7 @@ ErrorStatus LL_COMP_Init(COMP_TypeDef *COMPx, LL_COMP_InitTypeDef *COMP_InitStru
     /*  - OutputSelection                                                     */
     /*  - OutputPolarity                                                      */
     /*  - OutputBlankingSource                                                */
-    MODIFY_REG(COMPx->CSR,
-                 ((uint32_t)0x00000000U)
+    clearMask = ((uint32_t)0x00000000U)
 #if defined(COMP_CSR_COMPxMODE)
                | COMP_CSR_COMPxMODE
 #endif
@@ -674,9 +675,8 @@ ErrorStatus LL_COMP_Init(COMP_TypeDef *COMPx, LL_COMP_InitTypeDef *COMP_InitStru
 #endif
                | COMP_CSR_COMPxOUTSEL
                | COMP_CSR_COMPxPOL
-               | COMP_CSR_COMPxBLANKING
-              ,
-                 ((uint32_t)0x00000000U)
+               | COMP_CSR_COMPxBLANKING;
+    setMask = ((uint32_t)0x00000000U)
 #if defined(COMP_CSR_COMPxMODE)
                | COMP_InitStruct->PowerMode
 #endif
@@ -689,9 +689,8 @@ ErrorStatus LL_COMP_Init(COMP_TypeDef *COMPx, LL_COMP_InitTypeDef *COMP_InitStru
 #endif
                | COMP_InitStruct->OutputSelection
                | COMP_InitStruct->OutputPolarity
-               | COMP_InitStruct->OutputBlankingSource
-              );
-
+               | COMP_InitStruct->OutputBlankingSource;
+    MODIFY_REG(COMPx->CSR, clearMask, setMask);
   }
   else
   {
